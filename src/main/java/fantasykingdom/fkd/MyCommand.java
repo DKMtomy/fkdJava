@@ -1,0 +1,18 @@
+package fantasykingdom.fkd;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+
+public class MyCommand implements CommandExecutor {
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Command execution logic
+        if (command.getName().equalsIgnoreCase("mycommand")) {
+            sender.sendMessage("This is my command!");
+            return true;
+        }
+        return false;
+    }
+}

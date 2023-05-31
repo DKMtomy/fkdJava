@@ -1,0 +1,9 @@
+name: main
+version: '${project.version}'
+main: fantasykingdom.fkd.Main
+api-version: 1.19
+commands:
+  gui:
+    description: opens the gui
+  mycommand:
+    description: My custom command
