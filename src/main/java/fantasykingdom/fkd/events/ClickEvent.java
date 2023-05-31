@@ -18,7 +18,7 @@ public class ClickEvent  implements Listener {
             switch (e.getCurrentItem().getType()){
                 case COMPASS:
                     player.closeInventory();
-                    player.sendMessage(ChatColor.GREEN + "you have choosen warps");
+                    player.sendMessage(ChatColor.GREEN + "you have choosen warps!");
                     break;
             }
 
