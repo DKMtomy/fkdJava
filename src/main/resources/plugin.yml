@@ -5,5 +5,9 @@ api-version: 1.19
 commands:
   gui:
     description: opens the gui
-  mycommand:
-    description: My custom command
+  fly:
+    description: enables fly
+    usage: /<command>
+  flyspeed:
+    description:  set your flyspeed
+    usage: /commannd <speed>

@@ -1,11 +1,12 @@
 package fantasykingdom.fkd;
 
+import fantasykingdom.fkd.commands.FlySpeedCommand;
 import fantasykingdom.fkd.commands.GUIcomand;
+import fantasykingdom.fkd.commands.flyCommand;
 import fantasykingdom.fkd.events.ClickEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin  implements Listener {
@@ -19,8 +20,9 @@ public final class Main extends JavaPlugin  implements Listener {
         getServer().getPluginManager().registerEvents(this,this);
         getServer().getPluginManager().registerEvents(new ClickEvent(), this);
 
-        getCommand("mycommand").setExecutor(new MyCommand());
         getCommand("gui").setExecutor(new GUIcomand());
+        getCommand("fly").setExecutor(new flyCommand());
+        getCommand("flyspeed").setExecutor(new FlySpeedCommand());
 
     }
 
