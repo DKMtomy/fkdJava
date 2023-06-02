@@ -35,7 +35,7 @@ public class GUIcomand implements CommandExecutor {
 
             ItemStack staff = createMenuItem(Material.REDSTONE_TORCH, ChatColor.GREEN + "Staff", ChatColor.LIGHT_PURPLE + "View the server staff");
 
-            ItemStack[] menu_items = {tpa, help, trade, globe, staff};
+            ItemStack[] menu_items = {globe, tpa, trade,staff,help};
             gui.setContents(menu_items);
             player.openInventory(gui);
         }

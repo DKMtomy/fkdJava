@@ -3,6 +3,7 @@ package fantasykingdom.fkd.events;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,10 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ClickEvent implements Listener {
 
@@ -23,8 +21,8 @@ public class ClickEvent implements Listener {
 
     public ClickEvent() {
         staffMembers = new HashMap<>();
-        staffMembers.put("vekqi", "Developer");
-        staffMembers.put("seagod", "Developer");
+        staffMembers.put("DKMtomy", "Developer");
+        staffMembers.put("XBadKarmaKillsX", "Developer");
         staffMembers.put("jornTheOnlyOne", "Owner");
         staffMembers.put("OxeyeNLD", "Builder");
         staffMembers.put("recovered", "Builder");
@@ -72,7 +70,7 @@ public class ClickEvent implements Listener {
         Inventory staffGUI = Bukkit.createInventory(player, 9, ChatColor.AQUA + "Staff Members");
 
         for (String staffName : staffMembers.keySet()) {
-            ItemStack staffItem = createMenuItem(Material.PLAYER_HEAD, ChatColor.GREEN + staffName, staffMembers.get(staffName));
+            ItemStack staffItem = createStaffMenuItem(staffName);
             staffGUI.addItem(staffItem);
         }
 
@@ -80,6 +78,27 @@ public class ClickEvent implements Listener {
         staffGUI.setItem(8, exitButton);
 
         player.openInventory(staffGUI);
+    }
+
+    private ItemStack createStaffMenuItem(String staffName) {
+        ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+
+        OfflinePlayer staffPlayer = Bukkit.getOfflinePlayer(staffName);
+        skullMeta.setOwningPlayer(staffPlayer);
+
+        String displayName = ChatColor.RED + staffName;
+        if (staffPlayer.isOnline()) {
+            displayName = ChatColor.GREEN + staffName;
+        }
+
+        skullMeta.setDisplayName(displayName);
+        List<String> itemLore = new ArrayList<>();
+        itemLore.add(ChatColor.LIGHT_PURPLE + "Role: " + staffMembers.get(staffName));
+        skullMeta.setLore(itemLore);
+
+        itemStack.setItemMeta(skullMeta);
+        return itemStack;
     }
 
     private ItemStack createMenuItem(Material material, String displayName, String lore) {

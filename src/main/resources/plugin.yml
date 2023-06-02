@@ -11,3 +11,6 @@ commands:
   flyspeed:
     description:  set your flyspeed
     usage: /commannd <speed>
+  setrank:
+    description: sets the rank of a player
+    usage: /<command> <player> <rank>
